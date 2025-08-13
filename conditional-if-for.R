@@ -191,3 +191,54 @@ for (i in seq_along(tigers)) {
   big_cats[i] <- tigers[i] + lions[i]
   }
  
+# Session B
+  #for loops to iterate across columns of a data frame
+
+#mean_val <- mean(mtcars[[1]], na.rm = TRUE)
+
+#vector to store values
+mean_mtcars <- vector(mode = "numeric", length = ncol(mtcars))
+
+for(i in 1:ncol(mtcars)) {
+  mean_val <- mean(mtcars[[1]], na.rm = TRUE)
+  mean_mtcars[i] <- mean_val
+}
+
+# A for loop over columns with a condition
+library(palmerpenguins)
+
+penguin_median <- median(penguins[[3]], na.rm = TRUE)
+
+if (is.numeric(penguins[[i]])) {
+  penguin_median <- median(penguins[[i]], na.rm = TRUE)
+  print(penguin_median) 
+  } else {
+    print("data not numeric")
+  }
+
+
+for (i in seq_along(penguins)) {
+  if (is.numeric(penguins[[i]])) {
+    penguin_median <- median(penguins[[i]], na.rm = TRUE)
+    print(penguin_med)
+  } else {
+    print("data not numeric")
+  }
+}
+
+#Functional programming
+
+#apply() function iterates over columns or rows
+
+apply(X = mtcars, MARGIN = 2, FUN = mean)
+
+library(tidyverse)
+
+# applying the function mean across the columns by group
+penguins %>% 
+  group_by(species) %>% 
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))
+
+penguins %>% 
+  group_by(year) %>% 
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))
